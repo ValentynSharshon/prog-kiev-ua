@@ -1,1 +1,1 @@
-# prog-kiev-ua
+# My test project
