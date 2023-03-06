@@ -37,6 +37,15 @@ public class Runner {
         out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
         group.sortStudentsByLastName();
         out.println(group);
+
+        try {
+            out.println(group.searchStudentByLastName("Garrison").toCSVString());
+        } catch (StudentNotFoundException ex) {
+            out.println(ex.getMessage());
+        }
+
+        Student student = new Student();
+        out.println(student.fromCSVString("Sam Jonson mail 6"));
     }
 
 }
