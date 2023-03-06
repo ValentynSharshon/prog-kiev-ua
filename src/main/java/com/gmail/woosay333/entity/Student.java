@@ -5,15 +5,15 @@ import com.gmail.woosay333.enums.Gender;
 public class Student extends Human {
 
     private int id;
-    private String groupName;
+    private String groupName = "Unknown";
 
     public Student() {
+
     }
 
-    public Student(String name, String lastName, Gender gender, int id, String groupName) {
+    public Student(String name, String lastName, Gender gender, int id) {
         super(name, lastName, gender);
         this.id = id;
-        this.groupName = groupName;
     }
 
     public int getId() {
