@@ -1,4 +1,4 @@
-package com.gmail.woosay333.exceptions;
+package com.gmail.woosay333.hw.exceptions;
 
 public class GroupOverflowException extends Exception {
 

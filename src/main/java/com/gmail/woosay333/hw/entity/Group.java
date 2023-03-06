@@ -1,8 +1,8 @@
-package com.gmail.woosay333.entity;
+package com.gmail.woosay333.hw.entity;
 
-import com.gmail.woosay333.comparator.SortStudentsByLastName;
-import com.gmail.woosay333.exceptions.GroupOverflowException;
-import com.gmail.woosay333.exceptions.StudentNotFoundException;
+import com.gmail.woosay333.hw.comparator.SortStudentsByLastName;
+import com.gmail.woosay333.hw.exceptions.GroupOverflowException;
+import com.gmail.woosay333.hw.exceptions.StudentNotFoundException;
 
 import java.util.Arrays;
 import java.util.Comparator;

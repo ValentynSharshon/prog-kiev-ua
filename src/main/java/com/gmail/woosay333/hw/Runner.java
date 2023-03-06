@@ -1,10 +1,10 @@
-package com.gmail.woosay333;
+package com.gmail.woosay333.hw;
 
-import com.gmail.woosay333.entity.Group;
-import com.gmail.woosay333.entity.Student;
-import com.gmail.woosay333.enums.Gender;
-import com.gmail.woosay333.exceptions.GroupOverflowException;
-import com.gmail.woosay333.exceptions.StudentNotFoundException;
+import com.gmail.woosay333.hw.entity.Group;
+import com.gmail.woosay333.hw.entity.Student;
+import com.gmail.woosay333.hw.enums.Gender;
+import com.gmail.woosay333.hw.exceptions.GroupOverflowException;
+import com.gmail.woosay333.hw.exceptions.StudentNotFoundException;
 
 import static java.lang.System.out;
 

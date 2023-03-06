@@ -1,6 +1,6 @@
-package com.gmail.woosay333.entity;
+package com.gmail.woosay333.hw.entity;
 
-import com.gmail.woosay333.enums.Gender;
+import com.gmail.woosay333.hw.enums.Gender;
 
 import java.util.StringJoiner;
 
