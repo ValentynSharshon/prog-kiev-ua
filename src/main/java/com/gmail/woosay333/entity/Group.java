@@ -34,7 +34,7 @@ public class Group {
 
     public void addStudent(Student student) throws GroupOverflowException {
         if (student == null) {
-            throw new IllegalArgumentException("Student is null!");
+            throw new IllegalArgumentException("Can`t add student, student is null!");
         }
 
         for (int i = 0; i < students.length; i++) {
