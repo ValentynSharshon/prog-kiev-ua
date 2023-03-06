@@ -1,19 +1,25 @@
 package com.gmail.woosay333.entity;
 
+import com.gmail.woosay333.comparator.SortStudentsByLastName;
 import com.gmail.woosay333.exceptions.GroupOverflowException;
 import com.gmail.woosay333.exceptions.StudentNotFoundException;
+
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Group {
 
     private String groupName;
-    private Student[] students;
+    private final Student[] studentsGroup;
 
-    public Group() {
+    public Group(int groupLength) {
+        this.groupName = "Unknown";
+        this.studentsGroup = new Student[groupLength];
     }
 
     public Group(String groupName, int groupLength) {
         this.groupName = groupName;
-        this.students = new Student[groupLength];
+        this.studentsGroup = new Student[groupLength];
     }
 
     public String getGroupName() {
@@ -24,12 +30,8 @@ public class Group {
         this.groupName = groupName;
     }
 
-    public Student[] getStudents() {
-        return students;
-    }
-
-    public void setStudents(Student[] students) {
-        this.students = students;
+    public Student[] getStudentsGroup() {
+        return studentsGroup;
     }
 
     public void addStudent(Student student) throws GroupOverflowException {
@@ -37,9 +39,10 @@ public class Group {
             throw new IllegalArgumentException("Can`t add student, student is null!");
         }
 
-        for (int i = 0; i < students.length; i++) {
-            if (students[i] == null) {
-                students[i] = student;
+        for (int i = 0; i < studentsGroup.length; i++) {
+            if (studentsGroup[i] == null) {
+                studentsGroup[i] = student;
+                student.setGroupName(groupName);
                 return;
             }
         }
@@ -48,7 +51,7 @@ public class Group {
     }
 
     public Student searchStudentByLastName(String lastName) throws StudentNotFoundException {
-        for (Student student : students) {
+        for (Student student : studentsGroup) {
             if (student != null && student.getLastName().equals(lastName)) {
                 return student;
             }
@@ -58,9 +61,9 @@ public class Group {
     }
 
     public boolean removeStudentById(int id) {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i].getId() == id) {
-                students[i] = null;
+        for (int i = 0; i < studentsGroup.length; i++) {
+            if (studentsGroup[i].getId() == id) {
+                studentsGroup[i] = null;
                 return true;
             }
         }
@@ -68,12 +71,16 @@ public class Group {
         return false;
     }
 
+    public void sortStudentsByLastName() {
+        Arrays.sort(studentsGroup, Comparator.nullsFirst(new SortStudentsByLastName()));
+    }
+
     @Override
     public String toString() {
         StringBuilder group = new StringBuilder();
         group.append("Group: ").append(groupName).append(System.lineSeparator());
 
-        for (Student student : students) {
+        for (Student student : studentsGroup) {
             if (student != null) {
                 group.append(student).append(System.lineSeparator());
             }
