@@ -9,14 +9,17 @@ public class FilesRunner {
 
     public static void main(String[] args) {
         FileFilter fileFilter = new MyFileFilter("mp3", "exe", "zip", "json");
+        String path = "E:\\Dow";
+        File folder = new File(path);
+        File[] files = folder.listFiles(fileFilter);
 
-        String path = "D:\\Downloads";
-        File filder = new File(path);
-        File[] files = filder.listFiles(fileFilter);
-
+        assert files != null;
         for (File file : files) {
             out.println(file);
         }
+
+        long size = FileOperations.getFolderSize(folder);
+        out.println(size);
     }
 
 }
