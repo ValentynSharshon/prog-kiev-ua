@@ -7,6 +7,9 @@ import java.io.IOException;
 
 public class FileOperations {
 
+    private FileOperations() {
+    }
+
     public static void fileCopy(File in, File out) throws IOException {
         byte[] buffer = new byte[1024 * 1024 * 10];
         int readBytes = 0;
@@ -17,6 +20,23 @@ public class FileOperations {
                 fos.write(buffer, 0, readBytes);
             }
         }
-
     }
+
+    public static long getFolderSize(File folder) {
+        if (folder.isFile()) {
+            return folder.length();
+        } else {
+            long folderSize = 0;
+            File[] files = folder.listFiles();
+            assert files != null;
+
+            for (File file : files) {
+
+                folderSize += getFolderSize(file);
+            }
+
+            return folderSize;
+        }
+    }
+
 }
