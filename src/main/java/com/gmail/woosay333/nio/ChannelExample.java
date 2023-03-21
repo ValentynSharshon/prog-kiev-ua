@@ -14,7 +14,7 @@ public class ChannelExample {
         copyFile(from, to);
     }
 
-    private static void copyFile(String from, String to) {
+    public static void copyFile(String from, String to) {
         try (FileInputStream inputStream = new FileInputStream(from);
              FileOutputStream outputStream = new FileOutputStream(to)) {
 
