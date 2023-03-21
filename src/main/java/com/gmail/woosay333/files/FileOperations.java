@@ -1,9 +1,9 @@
 package com.gmail.woosay333.files;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+import static java.lang.System.out;
 
 public class FileOperations {
 
@@ -31,11 +31,21 @@ public class FileOperations {
             assert files != null;
 
             for (File file : files) {
-
                 folderSize += getFolderSize(file);
             }
 
             return folderSize;
+        }
+    }
+
+    public static void encodingDemo(String filePath) throws IOException {
+        try (InputStream is = new FileInputStream(filePath);
+             Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
+             BufferedReader br = new BufferedReader(reader)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                out.println(line);
+            }
         }
     }
 
