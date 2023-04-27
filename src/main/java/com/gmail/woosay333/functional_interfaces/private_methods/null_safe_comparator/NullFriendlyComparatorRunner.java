@@ -9,28 +9,43 @@ import static java.lang.System.out;
 public class NullFriendlyComparatorRunner {
 
     public static void main(String[] args) {
-        List<Integer> integerList = new ArrayList<>();
-        integerList.add(null);
-        integerList.add(-3);
-        integerList.add(-25);
-        integerList.add(67);
-        integerList.add(21);
-        integerList.add(54);
-        integerList.add(null);
-        integerList.add(78);
-        integerList.add(null);
-        integerList.add(3);
-        integerList.add(null);
-        integerList.add(null);
-        integerList.add(354);
+        List<CatEntity> catList = new ArrayList<>();
+        catList.add(null);
+        catList.add(CatEntity.newBuilder()
+                .setName("Vaska")
+                .setColor("Black")
+                .setBreed("Scotland")
+                .setWeight(7.8)
+                .build());
+        catList.add(CatEntity.newBuilder()
+                .setName("Umka")
+                .setColor("White")
+                .setBreed("Scotland")
+                .setWeight(6.6)
+                .build());
+        catList.add(CatEntity.newBuilder()
+                .setName("Kuzia")
+                .setColor("Yellow")
+                .setBreed("Scotland")
+                .setWeight(7.2)
+                .build());
+        catList.add(null);
+        catList.add(CatEntity.newBuilder()
+                .setName("Barsik")
+                .setColor("Red")
+                .setBreed("Scotland")
+                .setWeight(3.3)
+                .build());
+        catList.add(null);
+        catList.add(null);
 
-        Comparator<Integer> comparator = Comparator.naturalOrder();
+        Comparator<CatEntity> catWeightComparator = Comparator.comparingDouble(CatEntity::getWeight);
 
-        comparator = NullFriendlyComparator.rangeNullFirst(comparator);
+        catWeightComparator = NullFriendlyComparator.rangeNullFirst(catWeightComparator);
 
-        integerList.sort(comparator);
+        catList.sort(catWeightComparator);
 
-        out.println(integerList);
+        catList.forEach(out::println);
     }
 
 }
